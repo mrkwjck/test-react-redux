@@ -1,0 +1,39 @@
+@import "../../common/styles/_variables";
+
+.tile {
+
+    margin-top: 20px;
+
+    .body {
+
+        background-color: $colorWhite;
+        border-bottom: 1px solid $colorLightGray;
+        font-size: 14px;
+        padding: 10px;
+
+        .content {
+            padding: 10px 0;
+        }
+
+        .controls {
+            border-top: 1px solid $colorLightGray;
+            padding-top: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            font-size: 16px;
+            border-bottom: 1px solid $colorLightGray;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .icon {
+            float: right;
+        }
+
+
+
+    }
+
+}

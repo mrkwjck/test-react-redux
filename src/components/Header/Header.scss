@@ -1,0 +1,9 @@
+@import "../../common/styles/_variables";
+
+header {
+    background-color: $colorWhite;
+    border-bottom: 1px solid $colorLightGray;
+    font-size: 30px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
