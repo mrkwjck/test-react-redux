@@ -1,28 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Tile.scss"
-import { Icon } from "../Icon";
+import { ImageButton } from "../ImageButton";
 import maximizeIcon from "../../common/images/maximize.png"
 import minimizeIcon from "../../common/images/minimize.png"
 import refreshIcon from "../../common/images/refresh.png"
 
-
 type Props = {
+    id: string,
     title: string
+    tileState: TileState,
+    maximizeTileHandler: (tileKey: string) => void,
+    resetTilesHandler: () => void
 }
 
-export function Tile({title}: Props) {
-    return (
-        <div className="tile col-lg-3 col-md-6 col-sm-12">
+export enum TileState {
+    MAXIMIZED,
+    MINIMIZED,
+    HIDDEN
+}
+
+function getTileGridClass(tileState: TileState): string {
+    return tileState === TileState.MINIMIZED ? "col-lg-3 col-md-6 col-sm-12" : "col-12"
+}
+
+export function Tile({id, title, tileState, resetTilesHandler, maximizeTileHandler}: Props) {
+
+    const [loadingData, setLoadingData] = useState(false)
+
+    const handleRefreshClick = function() {
+        //TODO
+    }
+
+    const handleMinimizeClick = function() {
+        resetTilesHandler()
+    }
+
+    const handleMaximizeClick = function () {
+        maximizeTileHandler(id)
+    }
+
+    return tileState === TileState.HIDDEN ? null : (
+        <div className={"tile " + getTileGridClass(tileState)}>
             <div className="body">
                 <div className="header">
                     {title}
-                    <Icon image={maximizeIcon} alt="Maximize" />
+                    {tileState === TileState.MINIMIZED ?
+                        <ImageButton image={maximizeIcon} alt="Maximize" clickHandler={handleMaximizeClick}/> :
+                        <ImageButton image={minimizeIcon} alt="Minimize" clickHandler={handleMinimizeClick}/>
+                    }
                 </div>
                 <div className="content">
-                    content
+                    test
                 </div>
                 <div className="controls">
-                    <Icon image={refreshIcon} alt="Refresh" />
+                    <ImageButton image={refreshIcon} alt="Refresh" clickHandler={handleRefreshClick} />
                 </div>
             </div>
         </div>

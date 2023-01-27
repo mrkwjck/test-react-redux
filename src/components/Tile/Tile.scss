@@ -11,6 +11,10 @@
         font-size: 14px;
         padding: 10px;
 
+        button {
+            float: right;
+        }
+
         .content {
             padding: 10px 0;
         }
@@ -27,12 +31,6 @@
             padding-bottom: 10px;
             text-transform: uppercase;
         }
-
-        .icon {
-            float: right;
-        }
-
-
 
     }
 
