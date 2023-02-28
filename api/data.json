@@ -1,0 +1,32 @@
+{
+    "news": [
+        {
+            "id": 1,
+            "title": "West sends Ukraine mixed messages on war planes",
+            "url": "https://www.bbc.com/news/world-europe-64461613"
+        },
+        {
+            "id": 2,
+            "title": "Secretive Saudi executions leave families in the dark",
+            "url": "https://www.bbc.com/news/world-middle-east-64338876"
+        },
+        {
+            "id": 3,
+            "title": "Pakistan mosque blast death toll rises to 100\n",
+            "url": "https://www.bbc.com/news/world-asia-64462321"
+        },
+        {
+            "id": 4,
+            "title": "Tyre Nichols death: Three Memphis emergency staff fired",
+            "url": "https://www.bbc.com/news/world-us-canada-64408456"
+        },
+        {
+            "id": 5,
+            "title": "Priscilla Presley contests validity of Lisa Marie's will",
+            "url": "https://www.bbc.com/news/world-us-canada-64461305"
+        }
+    ],
+    "currencies": [],
+    "weather": [],
+    "stock": []
+}

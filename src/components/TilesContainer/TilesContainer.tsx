@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Tile, TileState } from "../Tile";
+import { NewsDataSource } from "../../infrastructure/datasource/NewsDataSource";
+import { WeatherDataSource } from "../../infrastructure/datasource/WeatherDataSource";
+import { StockDataSource } from "../../infrastructure/datasource/StockDataSource";
+import { CurrenciesDataSource } from "../../infrastructure/datasource/CurrenciesDataSource";
 
 export function TilesContainer() {
 
@@ -20,18 +24,24 @@ export function TilesContainer() {
         return TileState.MINIMIZED;
     }
 
-    const tilesIds = ["weather", "stock", "news", "currencies"]
+    const tilesConfig = [
+        {id: "weather", dataSource: new WeatherDataSource()},
+        {id: "stock", dataSource: new StockDataSource()},
+        {id: "news", dataSource: new NewsDataSource()},
+        {id: "currencies", dataSource: new CurrenciesDataSource()}
+    ]
 
     return (
         <div className="tiles-container container-fluid p-0">
             <div className="row m-0">
-                {tilesIds.map(tileId =>
-                    <Tile key={tileId}
-                          id={tileId}
-                          title={tileId}
-                          tileState={getTileState(tileId)}
+                {tilesConfig.map(tileConfig =>
+                    <Tile key={tileConfig.id}
+                          id={tileConfig.id}
+                          title={tileConfig.id}
+                          tileState={getTileState(tileConfig.id)}
                           maximizeTileHandler={maximizeTile}
                           resetTilesHandler={resetTiles}
+                          dataSource={tileConfig.dataSource}
                     />
                 )}
             </div>

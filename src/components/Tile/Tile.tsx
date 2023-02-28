@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Tile.scss"
 import { ImageButton } from "../ImageButton";
 import maximizeIcon from "../../common/images/maximize.png"
 import minimizeIcon from "../../common/images/minimize.png"
 import refreshIcon from "../../common/images/refresh.png"
+import { Data, DataSource } from "../../infrastructure/datasource";
 
 type Props = {
     id: string,
     title: string
     tileState: TileState,
     maximizeTileHandler: (tileKey: string) => void,
-    resetTilesHandler: () => void
+    resetTilesHandler: () => void,
+    dataSource: DataSource
+}
+
+type TileDataProps = {
+    data: Data[]
 }
 
 export enum TileState {
@@ -23,12 +29,40 @@ function getTileGridClass(tileState: TileState): string {
     return tileState === TileState.MINIMIZED ? "col-lg-3 col-md-6 col-sm-12" : "col-12"
 }
 
-export function Tile({id, title, tileState, resetTilesHandler, maximizeTileHandler}: Props) {
+function LoadingIndicator() {
+    return (
+        <div className="loader" />
+    )
+}
 
-    const [loadingData, setLoadingData] = useState(false)
+function TileData({data}: TileDataProps) {
+    return (
+        <ul>
+            {data.map(dataItem =>
+                <li key={dataItem.id}>{dataItem.label}</li>
+            )}
+        </ul>
+    )
+}
+
+export function Tile({id, title, tileState, resetTilesHandler, maximizeTileHandler, dataSource}: Props) {
+
+    const [loadingData, setLoadingData] = useState<boolean>(false)
+    const [data, setData] = useState<Data[]>([])
+
+    useEffect(function() {
+        loadData()
+    }, [])
+
+    const loadData = function() {
+        setLoadingData(true)
+        dataSource.getData()
+            .then(data => setData(data))
+            .then(() => setLoadingData(false))
+    }
 
     const handleRefreshClick = function() {
-        //TODO
+        loadData()
     }
 
     const handleMinimizeClick = function() {
@@ -50,7 +84,7 @@ export function Tile({id, title, tileState, resetTilesHandler, maximizeTileHandl
                     }
                 </div>
                 <div className="content">
-                    test
+                    {loadingData ? <LoadingIndicator /> : <TileData data={data} />}
                 </div>
                 <div className="controls">
                     <ImageButton image={refreshIcon} alt="Refresh" clickHandler={handleRefreshClick} />

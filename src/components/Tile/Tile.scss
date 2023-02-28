@@ -7,7 +7,7 @@
     .body {
 
         background-color: $colorWhite;
-        border-bottom: 1px solid $colorLightGray;
+        border: 1px solid $colorLightGray;
         font-size: 14px;
         padding: 10px;
 
@@ -17,6 +17,7 @@
 
         .content {
             padding: 10px 0;
+            height: 200px;
         }
 
         .controls {
@@ -30,6 +31,14 @@
             border-bottom: 1px solid $colorLightGray;
             padding-bottom: 10px;
             text-transform: uppercase;
+        }
+
+        .loader {
+            background-image: url("../../common/images/loading.gif");
+            background-position: center;
+            background-size: 30px auto;
+            background-repeat: no-repeat;
+            height: 100%;
         }
 
     }
