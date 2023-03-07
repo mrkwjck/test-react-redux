@@ -32,7 +32,7 @@ export function TilesContainer() {
     ]
 
     return (
-        <div className="tiles-container container-fluid p-0">
+        <div className="container-fluid p-0">
             <div className="row m-0">
                 {tilesConfig.map(tileConfig =>
                     <Tile key={tileConfig.id}
@@ -44,6 +44,9 @@ export function TilesContainer() {
                           dataSource={tileConfig.dataSource}
                     />
                 )}
+            </div>
+            <div className="row">
+
             </div>
         </div>
     );
