@@ -1,0 +1,48 @@
+@import "../../common/styles/_variables";
+@import "../../common/styles/_functions";
+
+.form {
+
+    margin-top: 20px;
+
+    form {
+        background-color: $colorWhite;
+        border: 1px solid $colorLightGray;
+        padding: 20px;
+    }
+
+    input {
+        border: 1px solid $colorDarkGray;
+        border-radius: 5px;
+        outline: none;
+        padding: 10px;
+        color: $colorDarkGray;
+        font-family: $fontBaseFamily;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .label {
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: right;
+        margin-right: 10px;
+        width: 100px;
+        display: inline-block;
+    }
+
+    .outcome {
+
+        margin: 0;
+
+        .result {
+            font-size: calculateRem(24px);
+            font-weight: 700;
+
+        }
+    }
+
+}

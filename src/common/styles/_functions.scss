@@ -1,0 +1,6 @@
+@import "./_variables.scss";
+@import "node_modules/sass-math/math";
+
+@function calculateRem($valueInPx) {
+    @return round($valueInPx/$fontBaseSize*100)/100+#{'rem'};
+}

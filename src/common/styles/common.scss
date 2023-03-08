@@ -1,6 +1,10 @@
 @import "variables";
 @import "bootstrap/scss/bootstrap-grid.scss";
 
+:root {
+    font-size: 14px;
+}
+
 body {
     background-color: $colorLighterGray;
     color: $colorDarkGray;

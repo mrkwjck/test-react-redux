@@ -4,5 +4,5 @@ export const CALCULATOR_STORE_KEY = "calculator"
 export const SUM_STORE_KEY = "sum"
 
 export function selectSum(state: CalculatorStateType) {
-    return state.sum
+    return state[SUM_STORE_KEY]
 }

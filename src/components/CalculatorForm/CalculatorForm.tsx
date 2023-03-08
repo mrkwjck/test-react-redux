@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { selectSum } from "./state/selectors";
 import { updateSum } from "./state/actions";
 import { RootStateType } from "../../infrastructure/state/RootStateType";
+import "./CalculatorForm.scss"
 
 export function CalculatorForm() {
 
@@ -17,17 +18,20 @@ export function CalculatorForm() {
     }, [addend1, addend2])
 
     return(
-        <div className="form">
+        <div className="form col-lg-3 col-md-6 col-sm-12">
             <form>
                 <label>
-                    <span>Addend 1</span>
+                    <span className="label">Addend 1</span>
                     <input type="text" onChange={event => setAddend1(parseInt(event.target.value))}/>
                 </label>
                 <label>
-                    <span>Addend 2</span>
+                    <span className="label">Addend 2</span>
                     <input type="text" onChange={event => setAddend2(parseInt(event.target.value))}/>
                 </label>
-                <p>Sum: {sum}</p>
+                <p className="outcome">
+                    <span className="label">Sum</span>
+                    <span className="result">{sum}</span>
+                </p>
             </form>
         </div>
     )

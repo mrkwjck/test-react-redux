@@ -32,22 +32,17 @@ export function TilesContainer() {
     ]
 
     return (
-        <div className="container-fluid p-0">
-            <div className="row m-0">
-                {tilesConfig.map(tileConfig =>
-                    <Tile key={tileConfig.id}
-                          id={tileConfig.id}
-                          title={tileConfig.id}
-                          tileState={getTileState(tileConfig.id)}
-                          maximizeTileHandler={maximizeTile}
-                          resetTilesHandler={resetTiles}
-                          dataSource={tileConfig.dataSource}
-                    />
-                )}
-            </div>
-            <div className="row">
-
-            </div>
-        </div>
+        <>
+            {tilesConfig.map(tileConfig =>
+                <Tile key={tileConfig.id}
+                      id={tileConfig.id}
+                      title={tileConfig.id}
+                      tileState={getTileState(tileConfig.id)}
+                      maximizeTileHandler={maximizeTile}
+                      resetTilesHandler={resetTiles}
+                      dataSource={tileConfig.dataSource}
+                />
+            )}
+        </>
     );
 }
